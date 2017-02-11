@@ -16,6 +16,7 @@
 package com.example.android.miwok;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -32,10 +33,16 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         // Create an adapter that knows which fragment should be shown on each page
-        CategoryAdapter adapter = new CategoryAdapter(getSupportFragmentManager());
+        CategoryAdapter adapter = new CategoryAdapter(getSupportFragmentManager(),this);
 
         // Set the adapter onto the view pager
         viewPager.setAdapter(adapter);
+
+        //查找Tablayout
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        //关联Tablayout 与 viewPager
+        tabLayout.setupWithViewPager(viewPager);
+
         Log.e("MainActivity","错误信息");
         Log.w("MainActivity","警告信息");
         Log.i("MainActivity","普通信息");
